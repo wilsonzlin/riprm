@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+set -Eeuo pipefail
+
+gcc --std=c18 -O3 -flto -Wall -Wextra -Werror -l uring -o riprm riprm.c
