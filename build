@@ -2,4 +2,10 @@
 
 set -Eeuo pipefail
 
-gcc --std=c18 -O3 -flto -Wall -Wextra -Werror -l uring -o riprm riprm.c
+if [[ "${DEBUG:-}" = "1" ]]; then
+  args=(-O0 -g)
+else
+  args=(-O3)
+fi
+
+gcc --std=c18 "${args[@]}" -flto -Wall -Wextra -Werror -l uring -o riprm riprm.c
